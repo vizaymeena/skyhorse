@@ -1,0 +1,188 @@
+/* ==== GLOBAL RESET ==== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: #f7f8fa;
+}
+
+/* ==== NAVBAR WRAPPER ==== */
+.nav-wrapper {
+  display: grid;
+  grid-template-columns: 1fr auto; /* left: logo, right: credentials */
+  align-items: center;
+  padding: 0.5rem 1.2rem;
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* ==== LEFT SIDE: LOGO SECTION ==== */
+.travel-logo-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.1rem;
+  cursor: pointer;
+}
+
+.web-logo span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #E62727, #E62727);
+  color: white;
+  font-size: 1.5rem;
+  border: 1px solid white;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.web-details {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+/* Website Name */
+.web-details span:first-child {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #E62727;
+  letter-spacing: 0.5px;
+}
+
+.web-details span:last-child {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+/* ==== RIGHT SIDE: CREDENTIALS ==== */
+.credentials-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Each section (business, trips, user) */
+.regs-buisness,
+.manageTrips,
+.registerUser {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  cursor: pointer;
+  border: 0.4px solid rgb(196, 195, 195);
+  padding: 5px 10px;
+}
+.registerUser {
+    background: linear-gradient(22deg, rgb(187, 33, 33) 0%, rgb(218, 37, 9) 100%);
+    padding: 10px 24px;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    color: #E62727;
+    border: none;
+    cursor: pointer;
+}
+
+/* == HOVER EFFECT ==   */
+.registerUser::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 50%;                       
+    height: 100%;
+    width: 100%;
+    background: rgba(3, 17, 122, 0.1); 
+    transform: translateX(-50%) scaleX(0); 
+    transform-origin: center;          /* expand from center outward */
+    transition: transform 0.5s ease-in-out;
+}
+
+.registerUser:hover::after {
+    transform: translateX(-50%) scaleX(1);
+}
+
+
+
+/* ==== ICONS ==== */
+.buisnessIcon span,
+.tripIcon span{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25px;
+  height: 25px;
+  background: #e8f0ff;
+  color: red;
+  border-radius: 10px;
+  font-size: 1.3rem;
+}
+.registerUserIcon span{
+    display: flex;
+    background-color: white;
+    width: 25px;
+    height: 25px;
+    padding: 6px;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ==== TEXT LINKS ==== */
+.buisnessLink,
+.tripLink{
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+.registerUserLink{
+    display: flex;
+    gap: 20px;
+    color: white;
+    transition: color 0.3s ease-in-out ;
+}
+.registerUserLink span:first-child {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: white;
+  transition: color 0.2s ease-in-out;
+}
+
+.buis-heading,
+.trip-Heading {
+  font-size: 0.79rem;
+  font-weight: 600;
+  color: #1c1c1c;
+}
+
+.buisnessLink span:last-child,
+.tripLink span:last-child {
+  font-size: 0.66rem;
+  color: #666;
+}
+
+
+
+
+
+
+
+
+
+
+/* ------- BASE BODY ------- */
+
+.baseBody{
+    min-height: 100vh;
+    border: 1px solid gray;
+}

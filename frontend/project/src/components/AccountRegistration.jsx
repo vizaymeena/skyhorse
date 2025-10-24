@@ -6,7 +6,7 @@ import registration_img from "../assets/images/photos/accountRegistrationImg.jpg
 import business_img from '../assets/images/photos/businessAccReg.jpeg'
 import { useEffect, useState } from 'react'
 
-import ForgotWorkId from './forgotId'
+import ForgotWorkID from './ForgotId'
 
 export function RegisterAccount({setShowAccountForm}) {
 
@@ -58,7 +58,7 @@ export function RegisterAccount({setShowAccountForm}) {
   return (
     <div   className={`closeform ${isClosing ? "fadeOut" : "fadeIn"}`} onClick={handleOverlay}>
 
-        { isforgetId && <ForgotWorkId/>}
+        { isforgetId && <ForgotWorkID setisforgetId={setisforgetId}/>}
 
         <div className={`register ${isClosing ? "scaleOut" : "scaleIn"}`}>
           <section className="register_visual">

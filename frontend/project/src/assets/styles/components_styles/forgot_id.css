@@ -26,6 +26,7 @@
 }
 
 /* Back button */
+
 .forgotId-back {
   background: transparent;
   border: none;
@@ -60,7 +61,17 @@
 /* Credentials input group */
 .forgotId-credentials {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+}
+.forgotId-credentials button{
+  margin-top: 8px;
+  padding: 10px 8px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  background: #b71c1c;
+  color: white;
 }
 
 .forgotId-input-group {
@@ -87,14 +98,11 @@
   flex-grow: 1;
   border: none;
   font-size: 1rem;
-  padding: 0.5rem 0;
+  padding: 0.2rem 0;
   outline-offset: 2px;
+  width: 280px;
 }
 
-.forgotId-input:focus {
-  outline: 2px solid var(--color-primary, #e53935);
-  outline-offset: 2px;
-}
 
 /* Animations */
 @keyframes fadeIn {

@@ -1,0 +1,38 @@
+.searchSegmentBox{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 10vh;
+    width: 100%;
+    margin-top: 5%;
+    background-color: red;
+    
+}
+
+.searchSegmentBox .segmentBox{
+    display: flex;
+    
+    max-width: fit-content;
+    padding: 10px 20px;
+    gap: 20px;
+    border: 1px solid gray;
+    background-color: white;
+    align-items: center;
+}
+
+.searchSegmentBox .segmentBox .segment{
+    border: 1px solid gray;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.searchSegmentBox .segmentBox .segment span{
+    display: block;
+}
+.searchSegmentBox .segmentBox .segment .icon{
+    color: red;
+}
+.searchSegmentBox .segmentBox .segment .service{
+    color: gray;
+    font-weight: 550;
+}

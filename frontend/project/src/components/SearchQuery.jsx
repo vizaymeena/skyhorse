@@ -2,14 +2,16 @@ import React from 'react'
 
 // css
 import '../assets/styles/components_styles/search_query.css'
-
+// icons
 import { Plane, Car, Hotel } from "lucide-react";
+// components
+import FlightSearchForm from '../pages/FlightSearchForm';
+
 
 function SearchQuery() {
   return (
     <div className='searchSegmentBox'>
         <div className='segmentBox'>
-
             <div data-text={'flights'} className='segment'>
                 <span className='icon'><Plane/></span>
                 <span className='service'>Flights</span>
@@ -24,6 +26,12 @@ function SearchQuery() {
                 <span className='icon'><Hotel/></span>
                 <span className='service'>Hotels</span>
             </div>
+        </div>
+
+        <div className='serviceForm'>
+            <FlightSearchForm/>
+
+
         </div>
     </div>
   )

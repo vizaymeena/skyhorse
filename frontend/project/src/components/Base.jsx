@@ -84,7 +84,6 @@ function BaseLayout() {
 
     <div className='baseBody'>
         {showAccountForm && <RegisterAccount setShowAccountForm={setShowAccountForm} />}
-        
          <Outlet/>
     </div>
 

@@ -6,7 +6,13 @@ import { MdManageAccounts } from "react-icons/md";
 import { FaRegUser } from "react-icons/fa6";
 import { MdKeyboardArrowDown } from "react-icons/md";
 
-function PrimaryNavbar() {
+import { useState } from 'react';
+
+function PrimaryNavbar({setShowAccountForm}) {
+ 
+    
+
+
   return (
      <div className='nav-wrapper'>
         {/* WEBSITE LOGO */}

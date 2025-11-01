@@ -24,13 +24,12 @@ function BaseLayout() {
   return (
     <>
    
-    <PrimaryNavbar/>
+    <PrimaryNavbar setShowAccountForm={setShowAccountForm}/>
     
     {/* Body */}
 
     <main className='baseBody'>
         {showAccountForm && <RegisterAccount setShowAccountForm={setShowAccountForm} />}
-        
          <Outlet/>
     </main>
 

@@ -1,38 +1,98 @@
-.searchSegmentBox{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 10vh;
-    width: 100%;
-    margin-top: 5%;
-    background-color: red;
-    
+.searchSegmentBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: #f6f9fc;
+  width: 100%;
+  min-height: 85vh;
+  padding: 10px 0;
+  font-family: "Lato", sans-serif;
 }
 
-.searchSegmentBox .segmentBox{
-    display: flex;
-    
-    max-width: fit-content;
-    padding: 10px 20px;
-    gap: 20px;
-    border: 1px solid gray;
-    background-color: white;
-    align-items: center;
+/* === Segment Box (Tabs) === */
+.segmentBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+  background: #ffffff;
+  border-radius: 12px 12px 0 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  padding: 5px 30px;
+  margin-bottom: 0;
 }
 
-.searchSegmentBox .segmentBox .segment{
-    border: 1px solid gray;
-    padding: 5px 10px;
-    cursor: pointer;
+.segment {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 10px 18px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  position: relative;
 }
 
-.searchSegmentBox .segmentBox .segment span{
-    display: block;
+.segment:hover {
+  background: #eef6ff;
+  transform: translateY(-2px);
 }
-.searchSegmentBox .segmentBox .segment .icon{
-    color: red;
+
+.segment.active {
+  background: #0078ff;
+  box-shadow: 0 4px 8px rgba(0, 120, 255, 0.25);
 }
-.searchSegmentBox .segmentBox .segment .service{
-    color: gray;
-    font-weight: 550;
+
+.segment.active .icon,
+.segment.active .service {
+  color: #fff;
+}
+
+.segment .icon {
+  font-size: 24px;
+  color: #0078ff;
+  margin-bottom: 5px;
+}
+
+.segment .service {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  text-transform: capitalize;
+}
+
+/* === Service Form Section === */
+.serviceForm {
+  background: #ffffff;
+  width: 95%;
+  max-width: 1200px;
+  height: 70vh;
+  border-radius: 0 0 12px 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 10px 10px;
+  margin-top: 0;
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  .segmentBox {
+    flex-wrap: wrap;
+    padding: 10px 15px;
+    gap: 10px;
+  }
+
+  .serviceForm {
+    width: 95%;
+    padding: 20px;
+  }
+
+  .segment .icon {
+    font-size: 20px;
+  }
+
+  .segment .service {
+    font-size: 13px;
+  }
 }

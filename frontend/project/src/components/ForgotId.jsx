@@ -1,11 +1,11 @@
 
 
 import '../assets/styles/components_styles/forgot_id.css'
-function ForgotWorkID({setisforgetId}) {
+function ForgotWorkID() {
   return (
     <div className="forgotId-overlay">
       <div className="forgotId-modal">
-        <button className="forgotId-back" onClick={()=>setisforgetId(false)}>Back</button>
+        <button className="forgotId-back">Back</button>
 
         <h2 className="forgotId-title">We Are Here To Help</h2>
 
@@ -17,7 +17,12 @@ function ForgotWorkID({setisforgetId}) {
           <div className="forgotId-input-group">
             <span className="forgotId-country">INDIA</span>
             <span className="forgotId-code">+91</span>
-            <input type="text" placeholder="Enter Your Mobile number" autoFocus className="forgotId-input" />
+            <input
+              type="number"
+              placeholder="Enter your mobile number"
+              autoFocus
+              className="forgotId-input"
+            />
           </div>
           <button>Continue</button>
         </div>

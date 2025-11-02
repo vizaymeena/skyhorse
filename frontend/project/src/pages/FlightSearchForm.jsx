@@ -19,8 +19,6 @@ function FlightSearchForm() {
   let totalTravellers = adults + children + infants
   let  [onPassenger,setClosePassenger]=useState(false)
 
-  let [anotherCitySuggestion,setAnotherCitySuggestion] = useState(false)
-
 
   // suggestion
   let [showFromSuggestion,setFromSuggestion] = useState(false)
@@ -66,15 +64,21 @@ function FlightSearchForm() {
   }
 
   // close suggestion
-  function closeSuggestion(e){
+  function closeFromSuggestion(e){
     e.stopPropagation()
     setFromSuggestion(false)
+   
+  }
+   // close suggestion
+  function closeToSuggestion(e){
+    e.stopPropagation()
     setToSuggestion(false)
   }
 
   return (
     <div className="flight-widget">
-      {/* Trip type segment */}
+      {(tripSegment=="oneway" || "return") &&
+      <>
       <div className="flight-segment" onClick={selectSegment}>
 
         {["oneway", "return", "multicity"].map((type) => (
@@ -108,7 +112,7 @@ function FlightSearchForm() {
                   <p>{ap.airport}</p>
                 </div>
               ))}
-                <div className='closeSuggestion'><span onClick={closeSuggestion}>Back</span></div>
+                <div className='closeSuggestion'><span onClick={closeFromSuggestion}>Back</span></div>
               </div>
             </div>)}
 
@@ -140,7 +144,7 @@ function FlightSearchForm() {
               ))}
               </div>
 
-              <div className='closeSuggestion'><span onClick={closeSuggestion}>Back</span></div>
+              <div className='closeSuggestion'><span onClick={closeToSuggestion}>Back</span></div>
             </div>)}
 
         </div>
@@ -157,7 +161,7 @@ function FlightSearchForm() {
         </div>
 
         {/* Return */}
-       {(tripSegment=="oneway" || tripSegment=="return")&&
+       
   
         <div className="fieldBox">
           <span className='heading'>Return <ChevronDown size={16} color='blue'/> </span>
@@ -174,8 +178,6 @@ function FlightSearchForm() {
             <p>Tap to add a return date for bigger discount </p>
           )}
         </div>
-       }
-      
       {/* Passenger & Class */}
         <div className='fieldBox fieldBoxPassenger' onClick={()=>setClosePassenger(true)}>
           <span className='Heading'>Traveller & Class <ChevronDown size={16} color='blue' /></span>
@@ -204,9 +206,11 @@ function FlightSearchForm() {
          
         </div>
       </div>
-       
-       
+     </>
+      }
     </div>
+
+
   )
 }
 

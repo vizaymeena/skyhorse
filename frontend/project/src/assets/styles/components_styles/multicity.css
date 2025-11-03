@@ -1,0 +1,207 @@
+/* multicity */
+.multiCityWrapper{
+  height: 60vh;
+  width: 1200px;
+  border: 2px solid red;
+  margin-top: 12rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.multiCityCardWrapper{
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+  background-color: white;
+  
+}
+.parentCity {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); 
+  gap: 1rem;
+  align-items: start;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  background: #fafafa;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.parentCity:hover {
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+}
+
+/* From / To boxes */
+.cityOneBox,
+.ToBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0.8rem 1rem;
+  background: #fff;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.cityOneBox:hover,
+.ToBox:hover {
+  border-color: #0077ff;
+  box-shadow: 0 0 0 3px rgba(0, 119, 255, 0.15);
+}
+
+.cityOneBox .title,
+.ToBox .title {
+  font-size: 12px;
+  color: #666;
+  font-weight: 500;
+}
+
+.cityOneBox h4,
+.ToBox h4 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0.3rem 0;
+}
+
+.cityOneBox p,
+.ToBox p {
+  font-size: 13px;
+  color: #777;
+}
+
+/* Date field */
+.fieldBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #fff;
+  border-radius: 10px;
+  padding: 0.8rem 1rem;
+  position: relative;
+}
+
+.fieldBox .heading {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 0.3rem;
+}
+
+.fieldBox input[type="date"] {
+  font-size: 14px;
+  padding: 0.4rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+.fieldBox input[type="date"]:focus {
+  border-color: #0077ff;
+  outline: none;
+}
+
+.date-display {
+  position: absolute;
+  bottom: -20px;
+  left: 10px;
+  font-size: 12px;
+  color: #0077ff;
+}
+
+/* Passenger & Class */
+.fieldBoxPassenger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #fff;
+  border-radius: 10px;
+  padding: 0.8rem 1rem;
+  cursor: pointer;
+  position: relative;
+}
+
+.fieldBoxPassenger .Heading {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 0.3rem;
+}
+
+.fieldBoxPassenger .passenger-count {
+  font-size: 16px;
+  font-weight: 600;
+  margin-right: 4px;
+}
+
+.fieldBoxPassenger .class {
+  font-size: 14px;
+  color: #444;
+}
+
+/* Add another city button */
+.AnotherCityButton {
+  grid-column: 1 / -1;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.AnotherCityButton button {
+  padding: 0.6rem 1.2rem;
+  font-size: 14px;
+  background: #0077ff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.AnotherCityButton button:hover {
+  background: #005ad1;
+}
+
+/* Suggestion dropdown */
+.suggestionBox {
+  position: absolute;
+  top: 110%;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  padding: 1rem;
+  z-index: 100;
+}
+
+.suggestionBox input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+}
+
+.suggestionBox h1 {
+  font-size: 14px;
+  color: #444;
+  margin-bottom: 0.4rem;
+}
+
+.suggestedAirports {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.suggestedAirports div {
+  padding: 0.4rem 0.5rem;
+  border-radius: 6px;
+  transition: background 0.2s ease;
+}
+
+.suggestedAirports div:hover {
+  background: rgba(0, 119, 255, 0.08);
+}

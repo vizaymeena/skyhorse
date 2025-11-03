@@ -1,4 +1,9 @@
 
+
+.flight-widget{
+  height: 80vh;
+  width: 100%;
+}
 .flight-segment{
     display: flex;
     gap: 20px;
@@ -284,3 +289,5 @@
 .anotherCityContainer{
   display: flex;
 }
+
+

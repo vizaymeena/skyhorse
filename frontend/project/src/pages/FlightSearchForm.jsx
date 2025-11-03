@@ -5,11 +5,30 @@ import '../assets/styles/pages_styles/flight_widget.css'
 import { Check, ArrowRightLeft ,ChevronDown } from 'lucide-react'
 
 import PassengerSelector from '../components/flightform/PassengerClass'
+import MultiCityQueryCard from '../components/flightform/MultiCity'
 
 function FlightSearchForm() {
+
+  // trip segment
   let [tripSegment, setTripSegment] = useState("oneway")
-  let [departureDate, setDepartureDate] = useState("")
-  let [returnDate, setReturnDate] = useState("")
+
+  // add return date in the field if tripsegment is equal to return date
+  let [tripData,setTripData] = useState({
+    "oneway_rtn":{from:"",to:"",departure_date:"",
+      ...(tripSegment=="return" && {return_date:''}),
+      class:"",passenger:null},
+   
+    "multicity":{class:"",passenger:null, 
+        multiTripData:[{ from:'',to:'',departure_date:''}]
+    }
+  })
+
+
+  // multicity
+  let [anCityFrom,setIsActiveFrom] = useState(false);
+  let [anCityTo,setIsActiveTo] = useState(false)
+  let [isAnotherCityActive,setAnotherCityActive] = useState(false)
+  let [anotherCitySuggestion,setAnotherCitySuggestion] = useState(false)
 
   // passenger & class
   let [adults, setAdults] = useState(1)
@@ -18,6 +37,8 @@ function FlightSearchForm() {
   let [travelClass, setTravelClass] = useState("Economy")
   let totalTravellers = adults + children + infants
   let  [onPassenger,setClosePassenger]=useState(false)
+
+ 
 
 
   // suggestion
@@ -91,7 +112,8 @@ function FlightSearchForm() {
 
       {/* Destination selection */}
       <div className="destination-widget">
-        <div className="fieldBox fieldBoxFrom" onClick={selectFrom}>
+       {(tripSegment=="oneway" || tripSegment =="return") ? <>
+         <div className="fieldBox fieldBoxFrom" onClick={selectFrom}>
           <span className='heading'>From</span>
           <h4>{airports[0].city}</h4>
           <span>{airports[0].code} - {airports[0].airport}</span>
@@ -154,10 +176,10 @@ function FlightSearchForm() {
           <span className='heading'>Departure <ChevronDown size={16} color='blue'/> </span>
           <input
             type="date"
-            value={departureDate}
+            value={tripSegment=="oneway" && tripData?.oneway_rtn?.departure_date || ""}
             onChange={(e) => setDepartureDate(e.target.value)}
           />
-          {departureDate && <span className="date-display">{formatDate(departureDate)}</span>}
+          {tripData.oneway_rtn.departure_date && <span className="date-display">{formatDate(tripData?.oneway_rtn?.departure_date || "")}</span>}
         </div>
 
         {/* Return */}
@@ -169,10 +191,10 @@ function FlightSearchForm() {
             <>
               <input
                 type="date"
-                value={returnDate}
+                 value={tripSegment=="oneway" && tripData?.oneway_rtn?.return_date || ''}
                 onChange={(e) => setReturnDate(e.target.value)}
               />
-              {returnDate && <span className="date-display">{formatDate(returnDate)}</span>}
+              {returnDate && <span className="date-display">{formatDate(tripData?.oneway_rtn?.return_date)}</span>}
             </>
           ) : (
             <p>Tap to add a return date for bigger discount </p>
@@ -202,9 +224,21 @@ function FlightSearchForm() {
                </div>
              </>
            )}
-
-         
         </div>
+        </>
+       : 
+      
+       (
+       
+       <MultiCityQueryCard
+       tripData ={tripData}
+       setTripData={setTripData}
+       anCityFrom={anCityFrom} anCityTo={anCityTo}
+       isAnotherCityActive={isAnotherCityActive} setAnotherCityActive={setAnotherCityActive}
+       onPassenger={onPassenger}
+           
+       />) }
+
       </div>
      </>
       }

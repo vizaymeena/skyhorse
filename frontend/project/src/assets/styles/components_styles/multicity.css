@@ -1,28 +1,46 @@
 /* multicity */
-.multiCityWrapper{
-  height: 60vh;
-  width: 1200px;
+.multiCityCardWrapper{
+  
+  display: flex;
+  margin-top: 8rem;
+  width: 100%;
+  flex-direction: column;
   border: 2px solid red;
+  width: 100%;
+  height: auto;
+  background-color: white;
+  transition: height 0.3s ease;
+}
+.multi-city-card-wrapper {
+  grid-column: 1 / -1;
+}
+
+.multiCityWrapper{
+  height: 100vh;
+  max-width: 1200px;
+  border: 2px solid red ;
+  margin-top: 20rem;
+  display: flex;
+  flex-direction: column;
+}
+.multiCityExtendedWrapper{
+  height: fit-content;
+  max-width: 1200px;
+  border: 2px solid red ;
   margin-top: 12rem;
   display: flex;
   flex-direction: column;
 }
 
-.multiCityCardWrapper{
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 1rem;
-  background-color: white;
-  
-}
+
 .parentCity {
   display: grid;
   grid-template-columns: repeat(4, 1fr); 
   gap: 1rem;
   align-items: start;
   padding: 1rem;
+  width: 100%;
   border: 1px solid #ddd;
-  border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
   background: #fafafa;
   position: relative;
@@ -41,7 +59,6 @@
   justify-content: center;
   padding: 0.8rem 1rem;
   background: #fff;
-  border-radius: 10px;
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
@@ -79,8 +96,8 @@
   flex-direction: column;
   justify-content: center;
   background: #fff;
-  border-radius: 10px;
-  padding: 0.8rem 1rem;
+  
+  padding: 0.5rem 1rem;
   position: relative;
 }
 
@@ -94,7 +111,7 @@
   font-size: 14px;
   padding: 0.4rem;
   border: 1px solid #ccc;
-  border-radius: 6px;
+  
   cursor: pointer;
   transition: border-color 0.3s ease;
 }
@@ -118,7 +135,7 @@
   flex-direction: column;
   justify-content: center;
   background: #fff;
-  border-radius: 10px;
+  
   padding: 0.8rem 1rem;
   cursor: pointer;
   position: relative;
@@ -142,19 +159,18 @@
 }
 
 /* Add another city button */
-.AnotherCityButton {
-  grid-column: 1 / -1;
-  text-align: center;
-  margin-top: 1rem;
+.AnotherCityButton{
+  line-height: 62.23px;
+  margin-left: 20px;
+  margin-top: 1.5rem;
 }
-
 .AnotherCityButton button {
   padding: 0.6rem 1.2rem;
   font-size: 14px;
   background: #0077ff;
   color: #fff;
   border: none;
-  border-radius: 8px;
+  
   cursor: pointer;
   transition: background 0.3s ease;
 }
@@ -171,7 +187,7 @@
   width: 100%;
   background: #fff;
   box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-  border-radius: 8px;
+  
   padding: 1rem;
   z-index: 100;
 }
@@ -180,7 +196,7 @@
   width: 100%;
   padding: 0.5rem;
   border: 1px solid #ddd;
-  border-radius: 6px;
+  
   margin-bottom: 0.5rem;
 }
 
@@ -198,7 +214,7 @@
 
 .suggestedAirports div {
   padding: 0.4rem 0.5rem;
-  border-radius: 6px;
+  
   transition: background 0.2s ease;
 }
 

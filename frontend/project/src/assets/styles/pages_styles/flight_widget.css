@@ -3,6 +3,8 @@
 .flight-widget{
   height: 80vh;
   width: 100%;
+  padding: 10px;
+  border: 2px solid green;
 }
 .flight-segment{
     display: flex;

@@ -12,6 +12,7 @@ import { MdManageAccounts } from "react-icons/md";
 import { FaRegUser } from "react-icons/fa6";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { useState } from 'react';
+import PrimaryNavbar from './navbar_component/PrimaryNavbar';
 
 // component
 import { RegisterAccount } from './AccountRegistration';

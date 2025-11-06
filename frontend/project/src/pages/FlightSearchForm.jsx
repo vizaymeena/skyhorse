@@ -194,7 +194,7 @@ function FlightSearchForm() {
                  value={tripSegment=="oneway" && tripData?.oneway_rtn?.return_date || ''}
                 onChange={(e) => setReturnDate(e.target.value)}
               />
-              {returnDate && <span className="date-display">{formatDate(tripData?.oneway_rtn?.return_date)}</span>}
+              {tripData?.oneway_rtn?.return_date && <span className="date-display">{formatDate(tripData?.oneway_rtn?.return_date)}</span>}
             </>
           ) : (
             <p>Tap to add a return date for bigger discount </p>
@@ -236,8 +236,8 @@ function FlightSearchForm() {
        anCityFrom={anCityFrom} anCityTo={anCityTo}
        isAnotherCityActive={isAnotherCityActive} setAnotherCityActive={setAnotherCityActive}
        onPassenger={onPassenger}
-           
-       />) }
+       />
+       )}
 
       </div>
      </>

@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import '../../assets/styles/components_styles/multicity.css'
 
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown,X } from 'lucide-react';
+import {motion,AnimatePresence } from 'framer-motion'
 
 function MultiCityQueryCard({
     tripData,setTripData,
@@ -11,10 +12,13 @@ function MultiCityQueryCard({
     }) {
 
 
+    let [isActive,setActive] = useState(false)
+
    
   return (
     <>
-    <div className='multiCityCardWrapper'>
+    <AnimatePresence mode='wait'>
+    <motion.div className='multiCityCardWrapper' layout>
     {/* CITY ONE */}
      <div className='parentCity'>
          {/* Another City From */}
@@ -135,7 +139,7 @@ function MultiCityQueryCard({
                 <span className='title'>From</span>
                 <h4>Delhi</h4>
                 <p>DEL-Indira Gandhi Airport</p>
-            </div>
+        </div>
             {anCityTo && (
                 <>
                 <div className='suggestionBox'>
@@ -163,14 +167,20 @@ function MultiCityQueryCard({
           {tripData?.multicity?.multiTripData?.[0]?.departure_date || '' && <span className="date-display">{formatDate(tripData?.multicity?.multiTripData?.[0]?.departure_date || '')}</span>}
         </div>
 
-        <div className='AnotherCityButton' onClick={()=>isAnotherCityActive(true)}>
-           {setAnotherCityActive ? "X":  <button>Add Another City</button>}
+        <div className='AnotherCityButton' onClick={()=>setAnotherCityActive(prev=>!prev)}>
+          {isAnotherCityActive ? <span><X/></span> : <button>Add Another City</button> } 
         </div>
      </div>
 
+     
+    <AnimatePresence mode="sync">
      {isAnotherCityActive && (<>
-
-     <div className='parentCity parentCityTwo'>
+     <motion.div className='parentCity parentCityTwo'
+      initial={{ opacity: 0, y: -20, scale: 0.95 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      exit={{ opacity: 0, y: -10, scale: 1 }}
+      transition={{ duration: 0.4, ease: "easeInOut" }}
+     >
          {/* Another City From */}
         <div className='cityOneBox' onClick={()=>setIsActiveFrom(true)}>
             <div className='fromBox'>
@@ -222,18 +232,24 @@ function MultiCityQueryCard({
           <span className='heading'>Departure <ChevronDown size={16} color='blue'/> </span>
           <input
             type="date"
-            value={tripData.multicity[0].multiTripData[0]?.departure_date || ''}
+            value={tripData?.multicity?.multiTripData[0]?.departure_date || ''}
             onChange={(e) => setDepartureDate(e.target.value)}
           />
-          {departureDate && <span className="date-display">{formatDate(tripData.multicity[0].multiTripData[0]?.departure_date || '')}</span>}
+          {tripData?.multicity?.multiTripData[0]?.departure_date || '' && <span className="date-display">{formatDate(tripData?.multicity?.multiTripData[0]?.departure_date || '')}</span>}
         </div>
 
-       </div>
+         <div className='AnotherCityButton' onClick={()=>setAnotherCityActive(false)}>
+          <X/>
+        </div>
+
+       </motion.div>
      
      </>)}
+    </AnimatePresence>
         
 
-    </div>
+    </motion.div>
+    </AnimatePresence>
     </>
   )
 }

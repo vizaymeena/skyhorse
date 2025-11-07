@@ -180,10 +180,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
   gap: 10px;
-  padding: 6px;
-  background: #f9fafb;
   border-radius: 10px;
-  border: 1px solid #e5e7eb;
   min-width: fit-content;
   max-width: 100%;
 }
@@ -218,14 +215,42 @@
   color: #ffffff;
   box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
 }
+.cat-options span.selected{
+  border-color: #3b82f6;
+  background: #3b82f6;
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+}
 
 /* Apply Button */
-.passenger-card > div:last-child {
+.submitData {
+  display:flex;
+  width:100%;
+  justify-content:space-between;
   margin-top: 10px;
-  display: flex;
-  justify-content: flex-end;
   padding-top: 24px;
   border-top: 1px solid #e5e7eb;
+}
+.passCategory{
+  display:flex;
+  gap:10px;
+  
+}
+.passCategory p{
+  display:inline;
+  color:gray;
+
+}
+.passClass{
+  margin-top:5px;
+}
+.passClass p{
+  color:rgb(255, 255, 255);
+  display:inline;
+  border-radius:10px;
+  padding:5px 10px;
+  font-size:10px;
+  background:rgba(48, 48, 216, 0.831);
 }
 
 .passenger-card button {
@@ -251,6 +276,34 @@
   transform: translateY(0);
   box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
 }
+
+/* selected passenger and class */
+.adult-count span {
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+
+.children-count span.selected{
+  background-color: #2563eb; 
+  color: white;
+  font-weight: 600;
+
+}
+.infants-count span.selected {
+  background-color: #2563eb; 
+  color: white;
+  font-weight: 600;
+}
+
+.adult-count span.selected {
+  background-color: #2563eb; 
+  color: white;
+  font-weight: 600;
+}
+
+
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -284,6 +337,61 @@
     height: 32px;
     width: 32px;
     font-size: 13px;
+  }
+}
+
+@media (max-width: 360px) {
+  .passenger-card {
+    width: 95%;
+    min-width: unset;
+    padding: 14px 16px;
+    border-radius: 10px;
+    overflow-y: auto;
+    max-height: 90vh;
+  }
+
+  .adult-sect,
+  .childrenWrapper,
+  .infantsWrapper {
+    max-width: 100%;
+    gap: 8px;
+  }
+
+  .adult-cat h4,
+  .children-cat h4,
+  .infants-cat h4,
+  .classCategory h4 {
+    font-size: 13px;
+  }
+
+  .adult-cat p,
+  .children-cat p,
+  .infants-cat p {
+    font-size: 11px;
+  }
+
+  .adult-count span,
+  .children-count span,
+  .infants-count span {
+    height: 28px;
+    width: 28px;
+    font-size: 12px;
+  }
+
+  .classCategory .cat-options {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .classCategory .cat-options span {
+    font-size: 12px;
+    padding: 4px;
+  }
+
+  .passenger-card button {
+    width: 100%;
+    font-size: 13px;
+    padding: 8px 0;
   }
 }
 

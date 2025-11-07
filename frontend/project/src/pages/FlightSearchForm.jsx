@@ -3,45 +3,38 @@ import '../assets/styles/pages_styles/flight_widget.css'
 
 // icons
 import { Check, ArrowRightLeft ,ChevronDown } from 'lucide-react'
-
 import PassengerSelector from '../components/flightform/PassengerClass'
-import MultiCityQueryCard from '../components/flightform/MultiCity'
 
 function FlightSearchForm() {
 
-  // trip segment
+  // Trip Segment
   let [tripSegment, setTripSegment] = useState("oneway")
 
-  // add return date in the field if tripsegment is equal to return date
+  // Joruney Data
   let [tripData,setTripData] = useState({
-    "oneway_rtn":{from:"",to:"",departure_date:"",
+    oneway_rtn:{
+      from:"",
+      to:"",
+      departure_date:"",
       ...(tripSegment=="return" && {return_date:''}),
-      class:"",passenger:null},
-   
-    "multicity":{class:"",passenger:null, 
-        multiTripData:[{ from:'',to:'',departure_date:''}]
-    }
+      class:"",passenger:{
+        adults:1 || 1,
+        children:0 || 0,
+        infants:0 || 0
+      }
+    },  
   })
 
-
-  // multicity
-  let [anCityFrom,setIsActiveFrom] = useState(false);
-  let [anCityTo,setIsActiveTo] = useState(false)
-  let [isAnotherCityActive,setAnotherCityActive] = useState(false)
-  let [anotherCitySuggestion,setAnotherCitySuggestion] = useState(false)
-
-  // passenger & class
+  // Passenger & Class
   let [adults, setAdults] = useState(1)
   let [children, setChildren] = useState(0)
   let [infants, setInfants] = useState(0)
   let [travelClass, setTravelClass] = useState("Economy")
-  let totalTravellers = adults + children + infants
+  let totalTravellers = null;
   let  [onPassenger,setClosePassenger]=useState(false)
 
  
-
-
-  // suggestion
+  // Suggestion
   let [showFromSuggestion,setFromSuggestion] = useState(false)
   let [showToSuggestion,setToSuggestion] = useState(false)
 
@@ -98,11 +91,10 @@ function FlightSearchForm() {
 
   return (
     <div className="flight-widget">
-      {(tripSegment=="oneway" || "return") &&
-      <>
+   
       <div className="flight-segment" onClick={selectSegment}>
 
-        {["oneway", "return", "multicity"].map((type) => (
+        {["oneway", "return"].map((type) => (
           <div key={type} className="segment-type" data-text={type}>
             <span className="radio">{tripSegment === type && <Check size="14px" />}</span>
             <span>{type.charAt(0).toUpperCase() + type.slice(1)}</span>
@@ -219,29 +211,54 @@ function FlightSearchForm() {
                    setAdults={setAdults} setChildren={setChildren} setInfants={setInfants}
                    setTravelClass={setTravelClass} travelClass={travelClass}
                    totalTravellers={totalTravellers}
-                   onClose={() => setClosePassenger(false)} // pass close handler down
+                   onClose={() => setClosePassenger(false)} 
                  />
                </div>
              </>
            )}
         </div>
         </>
-       : 
-      
-       (
+        :""}
        
-       <MultiCityQueryCard
-       tripData ={tripData}
-       setTripData={setTripData}
-       anCityFrom={anCityFrom} anCityTo={anCityTo}
-       isAnotherCityActive={isAnotherCityActive} setAnotherCityActive={setAnotherCityActive}
-       onPassenger={onPassenger}
-       />
-       )}
+      </div>
+  
+
+     <div className='specialFare'>
+      
+      <div className="specialHeading">
+        <h3>Special Fare : </h3>
+      </div>
+     
+      <div className="fareOptions">
+        <div className='fareType'>
+          <h4>Regular</h4>
+          <p>Regular Fares</p>
+        </div>
+
+        <div className='fareType'>
+          <h4>Student</h4>
+          <p>Extra Discount/Bagge</p>
+        </div>
+
+        <div className='fareType'>
+          <h4>Senior Citizen</h4>
+          <p>Flat Rs.600 off</p>
+        </div>
+
+        <div className='fareType'>
+          <h4>Docotr/Nurses</h4>
+          <p>Flat Rs.600 off</p>
+        </div>
+
+         <div className='fareType'>
+          <h4>Armed Forces</h4>
+          <p>Flat Rs.600 off</p>
+        </div>
 
       </div>
-     </>
-      }
+      
+     </div>
+    <div className='searchBtn'><button>Search</button></div>
     </div>
 
 

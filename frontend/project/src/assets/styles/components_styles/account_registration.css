@@ -344,3 +344,128 @@
     padding: 8px 20px;
     cursor: pointer;
 }
+
+
+/* MEDIA QUERY */
+@media (max-width: 992px) {
+  .register {
+    flex-direction: column;
+    width: 90%;
+    max-width: 600px;
+  }
+
+  .register_visual {
+    height: 220px;
+  }
+
+  .register_title {
+    font-size: 2rem;
+  }
+
+  .register_form-section {
+    box-shadow: none;
+  }
+
+  .register_form-wrapper {
+    padding: 1.8rem;
+    gap: 1.4rem;
+  }
+
+  .register_tab {
+    padding: 0.6rem;
+    font-size: 0.95rem;
+  }
+
+  .buisness-register {
+    width: 100%;
+    min-width: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .register {
+    width: 95%;
+    flex-direction: column;
+    border-radius: 8px;
+  }
+
+  .register_visual {
+    height: 180px;
+  }
+
+  .register_title {
+    font-size: 1.6rem;
+    line-height: 1.4;
+    padding: 0 10px;
+  }
+
+  .register_form-wrapper {
+    padding: 1.2rem;
+    gap: 1rem;
+  }
+
+  .register_tab {
+    font-size: 0.85rem;
+    padding: 0.5rem;
+  }
+
+  .register_input {
+    font-size: 0.9rem;
+    padding: 8px 10px;
+  }
+
+  .register_button {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+
+  .register_social {
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .register_social-btn {
+    font-size: 0.9rem;
+  }
+
+  .buisness-register {
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .inputEmailWrapper {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .inputEmailWrapper input[type='email'] {
+    width: 100%;
+  }
+
+  .inputEmailWrapper button {
+    width: 100%;
+  }
+
+  .or-business {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 400px) {
+  .register_title {
+    font-size: 1.4rem;
+  }
+
+  .register_tab {
+    font-size: 0.8rem;
+    padding: 0.4rem;
+  }
+
+  .register_button {
+    width: 100%;
+  }
+
+  .register_form-wrapper {
+    padding: 1rem;
+  }
+}

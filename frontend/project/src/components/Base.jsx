@@ -6,11 +6,6 @@ import {Outlet} from 'react-router-dom'
 
 
 // icons
-import { MdOutlineFlightTakeoff } from "react-icons/md";
-import { PiBagFill } from "react-icons/pi";
-import { MdManageAccounts } from "react-icons/md";
-import { FaRegUser } from "react-icons/fa6";
-import { MdKeyboardArrowDown } from "react-icons/md";
 import { useState } from 'react';
 import PrimaryNavbar from './navbar_component/PrimaryNavbar';
 

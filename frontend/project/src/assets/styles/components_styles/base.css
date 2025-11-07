@@ -186,3 +186,108 @@ body {
     min-height: 100vh;
     border: 1px solid gray;
 }
+
+
+
+
+
+/* ==== Responsive Navbar ==== */
+@media (max-width: 360px) {
+  /* Make navbar vertical */
+  .nav-wrapper {
+    grid-template-columns:1fr;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0.5rem;
+    row-gap: 0.5rem;
+    background-color: rgb(131, 13, 13);
+  }
+
+  /* Logo section centers horizontally */
+  .travel-logo-wrapper {
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .web-logo span {
+    width: 35px;
+    height: 35px;
+    font-size: 1.2rem;
+    border: 2px solid white;
+  }
+
+  .web-details span:first-child {
+    font-size: 1rem;
+  }
+
+  /* Credentials now stack vertically */
+  .credentials-wrapper {
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 0.6rem;
+  }
+
+  .regs-buisness,
+  .manageTrips,
+  .registerUser {
+    width: 50px;
+    height: 30px;
+    justify-content: flex-start;
+    padding: 0.6rem 0.8rem;
+    border-radius: 6px;
+  }
+
+  .buis-heading,
+  .trip-Heading {
+    font-size: 0.8rem;
+    color: white;
+    font-weight: 500;
+  }
+
+  .buisnessLink span:last-child,
+  .tripLink span:last-child {
+    font-size: 0.65rem;
+  }
+
+  .registerUser {
+    padding: 0.7rem 0.9rem;
+    justify-content: center;
+  }
+  .buisnessLink{
+    display: none;
+  }
+  .tripLink {
+    display: none;
+  }
+
+  .registerUserLink {
+    display: none;
+    gap: 8px;
+    justify-content: center;
+  }
+
+  .registerUserLink span:first-child {
+    font-size: 0.85rem;
+  }
+
+  .buisnessIcon span,
+  .tripIcon span,
+  .registerUserIcon span {
+    width: 22px;
+    height: 22px;
+    font-size: 1rem;
+  }
+
+  .buisnessLink span:last-child,
+  .tripLink span:last-child {
+    display: none;
+  }
+
+  .regs-buisness,
+  .manageTrips {
+    border: 2px solid #ddd;
+  }
+}

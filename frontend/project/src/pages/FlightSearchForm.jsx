@@ -139,7 +139,6 @@ function FlightSearchForm() {
           <h4>{airports[1].city}</h4>
           <span>{airports[1].code} - {airports[1].airport}</span>
 
-          {/* Recent Searches Suggestion */}
            {/* Recent Searches Suggestion */}
            {showToSuggestion &&(<div className='recent-searches'>
 

@@ -152,114 +152,151 @@
 .fieldBoxFrom{
     position: relative;
 }
-.recent-searches{
-    overflow-y: scroll;
-    overflow-x: hidden;
-    position: absolute;
-    z-index: 1;
-    top:20px;
-    left: 0;
-    background-color: white;
-    height: 50vh;
-    border: 1px solid gray;
-    width: 280px;
-}
-.recent-searches .search-input{
-    position: sticky;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: white;
-}
-/* broswer scrollbar */
-/* Chrome, Edge, and Safari */
-.recent-searches::-webkit-scrollbar {
-  width: 6px; 
-}
-
-.recent-searches::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0.3);
-  border-radius: 10px; 
-}
-
-.recent-searches::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(0, 0, 0, 0.5); 
-}
-
-.recent-searches::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-/* Firefox */
-.recent-searches {
-  scrollbar-width: thin; 
-  scrollbar-color: rgba(0, 0, 0, 0.3) transparent; 
-}
-.recent-searches input[type="text"]{
-    width: 268px;
-    height: 40px;
-    box-sizing: border-box;
-   
-}
-.recent-searches h4{
-    font-size: 12px;
-    margin-top: 5px;
-    font-weight: 700;
-    color: rgb(48, 48, 48);
-    padding: 5px 2px;
-    border-bottom: 1px solid gray;
-    margin-bottom: 5px;
-}
-.recent-searches .suggestions .box{
-    padding: 5px 2px;
-    margin-bottom: 5px;
-}
-
-.recent-searches .suggestions .box p{
-    font-size: 12px;
-    font-weight: 600;
-}
-.recent-searches .suggestions .box  .suggested{
-    display: flex;
-    justify-content: space-between;
-}
-.suggested .city{
-    color: black ;
-    font-weight: 550 ;
-}
-.suggested .code{
-    font-weight: 600;
-    font-size: 20px;
-}
-
-
-
-/* To */
 .fieldBoxTo{
-    position: relative;
+  position:relative;
+}
+/* Overlay Suggestions (From / To Section) */
+.recent-searches {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  width: 320px;
+  height: 55vh;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  border: 1px solid #e6e9ff;
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  animation: fadeIn 0.3s ease-in-out;
+  backdrop-filter: blur(4px);
 }
 
-/* close Suggestion Back Button */
-.closeSuggestion{
-    position: sticky;
-    bottom: 0;
-    background-color: white;
-    border-top: 1px solid gray;
-    padding: 5px;
-    text-align: end;
+/* Scrollbar */
+.recent-searches::-webkit-scrollbar {
+  width: 6px;
 }
-.closeSuggestion span{
-    height: 25px;
-    width: 200px;
-    padding: 5px;
-    color: white !important;
-    background-color: orangered;
-    border: 1px solid orangered;
-    border-radius: 2px;
-    cursor: pointer;
-    box-sizing: border-box;
+.recent-searches::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.25);
+  border-radius: 6px;
+}
+.recent-searches::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.45);
 }
 
+/* Search Input Header */
+.recent-searches .search-input {
+  position: sticky;
+  top: 0;
+  background: white;
+  z-index: 2;
+  padding: 12px 10px;
+  border-bottom: 1px solid #e6e9ff;
+}
+
+.recent-searches input[type="text"] {
+  width: 100%;
+  height: 40px;
+  border: 1px solid #d1d5f0;
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-size: 0.9rem;
+  outline: none;
+  transition: all 0.2s ease;
+}
+.recent-searches input[type="text"]:focus {
+  border-color: #5a6ff0;
+  box-shadow: 0 0 0 3px rgba(90, 111, 240, 0.15);
+}
+
+.recent-searches h4 {
+  margin-top: 8px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #5a5a5a;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* Suggestions List */
+.recent-searches .suggestions {
+  padding: 6px 0;
+}
+
+.recent-searches .suggestions .box {
+  padding: 10px 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.recent-searches .suggestions .box:hover {
+  background: #f7f9ff;
+  transform: translateX(2px);
+}
+
+.recent-searches .suggestions .box .suggested {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.suggested .city {
+  color: #1a1a40;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+.suggested .code {
+  color: #5a6ff0;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.recent-searches .suggestions .box p {
+  font-size: 0.8rem;
+  color: #8d8d8d;
+  margin-top: 4px;
+}
+
+/* Close Suggestion Button */
+.closeSuggestion {
+  position: sticky;
+  bottom: 0;
+  background-color: white;
+  border-top: 1px solid #e6e9ff;
+  text-align: center;
+  padding: 8px;
+}
+
+.closeSuggestion span {
+  display: inline-block;
+  background-color: #ff4b2b;
+  color: #ffffff !important;
+  font-weight: 600;
+  padding: 8px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.closeSuggestion span:hover {
+  background-color: #e13f20;
+  transform: translateY(-1px);
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 
 /* Passenger & Class */

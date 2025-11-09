@@ -8,8 +8,8 @@
 .flight-segment{
     display: flex;
     gap: 20px;
-    padding-bottom: 5px;
-    border-bottom:1px solid black ;
+    padding-bottom: 4px;
+    border-bottom:1px solid gray;
 }
 
 .flight-segment .segment-type span{
@@ -37,7 +37,7 @@
 
 /* destination widget */
 .destination-widget {
- margin-top: 3%;
+ margin-top: 1%;
  display: grid;
  align-items: center;
  width: 100%;
@@ -52,10 +52,11 @@
   flex-direction: column;
   justify-content: center;
   background-color: #fff;
-  padding: 0.8rem 1.2rem;
+  padding: 0.4rem 1rem;
   height: 110px;
   min-width: 160px;
-  border: 1px solid #e6e9ff;
+  cursor:pointer;
+  border: 0.5px solid #9e9e9f5f;
   box-shadow: inset 0 0 5px rgba(0,0,0,0.03);
   transition: border 0.2s ease, box-shadow 0.2s ease;
 }
@@ -151,6 +152,10 @@
 /* overlay desgin ----- From ,To, Departure, Return, Passenger & Class  */
 .fieldBoxFrom{
     position: relative;
+}
+.fieldBoxFrom h4,
+.fieldBoxTo h4{
+  font-size:35px;
 }
 .fieldBoxTo{
   position:relative;

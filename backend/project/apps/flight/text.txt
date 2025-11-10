@@ -1,0 +1,1 @@
+aircraft ---> airport ---> terminal ---> Flight ---> flightleg ---> flightFareType ---> flightScheduled --->  

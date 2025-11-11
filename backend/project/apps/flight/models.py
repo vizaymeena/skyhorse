@@ -1,14 +1,11 @@
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator, RegexValidator
 
-# Service Provider Model
-from apps.flight.models import ServiceProvider
+
+from apps.common.models import ServiceProvider # Represents the airline company
 
 
-
-# Create your models here.
-
-# Aircraft Type Small,Big 
+# This model Represents the specific Airplane
 class Aircraft(models.Model):
     airline = models.ForeignKey(ServiceProvider,on_delete=models.CASCADE)
     seat_capacity = models.PositiveIntegerField(validators=[MinValueValidator(1)])
@@ -32,7 +29,7 @@ class Aircraft(models.Model):
     def __str__(self):
         return f"( aircraft name is {self.airline})"
 
-# Airports for flights & Stops
+# This model Represents the Airports for Origin and Destination
 class Airport(models.Model):
     countryChoices = [("IND","India"),("SING","Singapore"),("JPN","Japan"),("ENG","ENGLAND")]
     name = models.CharField(max_length=100)
@@ -48,6 +45,7 @@ class Airport(models.Model):
         return f"{self.code} - {self.name}"
 
 
+# This model represents the terminal/gate over which flight will be avialble on scheduled time
 class Terminal(models.Model):
     airport = models.ForeignKey(Airport, on_delete=models.CASCADE, related_name="terminals")
     name = models.CharField(max_length=50)  # e.g., Terminal 1, Terminal 2
@@ -59,22 +57,30 @@ class Terminal(models.Model):
 
     def __str__(self):
         return f"{self.airport.code} - {self.name}"
+    
+# This model represents flight working days
+class Weekday(models.Model):
+    days=[("monday","MON"),("tuesday","TUE"),("wednesday","WED"),("thursday","THU"),("friday","FRI"),("saturday","SAT"),("sunday","SUN")]
+    name=models.CharField(max_length=50,choices=days)
 
-# Permanent Flight Route For Journey
+    def  __str__(self):
+        return f"{self.name}"
+
+# This model represents the ultimate destination of a flight journey
 class FlightRoute(models.Model):
     airline = models.ForeignKey(ServiceProvider, on_delete=models.CASCADE)
     flight_number = models.CharField(max_length=10)
     origin = models.ForeignKey(Airport, related_name="departures", on_delete=models.CASCADE)
     destination = models.ForeignKey(Airport, related_name="arrivals", on_delete=models.CASCADE)
     is_direct = models.BooleanField(default=False)
-    operational_days = models.PositiveIntegerField(default=7)  # days in a week 0-7
+    operational_days = models.ManyToManyField(Weekday,related_name="routes")
     is_active = models.BooleanField(default=True)
 
     def __str__(self):
         return f"{self.airline.code} {self.flight_number}: {self.origin.code} → {self.destination.code}"
 
 
-# FLight Stops Between Journey
+# This model represents the layover/stops between Journey of a flight
 class FlightLeg(models.Model):
     route = models.ForeignKey(FlightRoute, on_delete=models.CASCADE, related_name="legs")
     stop_order = models.PositiveIntegerField()  # 1,2,3 etc.
@@ -88,10 +94,10 @@ class FlightLeg(models.Model):
         ordering = ["stop_order"]
 
     def __str__(self):
-        return f"{self.route.flight_number} Stop {self.stops_order}: {self.origin.code} → {self.destination.code}"
+        return f"{self.route.flight_number} Stop {self.stop_order}: {self.origin.code} → {self.destination.code}"
 
 
-# Which Flight is Schedule for the date
+#This model represetns the scheduled flighs on due date
 class FlightSchedule(models.Model):
     STATUS_CHOICES = [
         ("scheduled", "Scheduled"),
@@ -116,7 +122,7 @@ class FlightSchedule(models.Model):
     def __str__(self):
         return f"{self.flight_leg.route.flight_number} on {self.flight_date}"
 
-# Fare options Saver,Super Saver & AirHorse Special
+# This Model represents the fare options available for a flight
 class FareType(models.Model):
     name = models.CharField(max_length=50)  
     description = models.TextField(blank=True)
@@ -133,7 +139,7 @@ class FareType(models.Model):
         return self.name
     
 
-# Scheduled Flight Class (Economy, Business, Premium)
+# 
 class FlightClass(models.Model):
     scheduled_flight = models.ForeignKey(FlightSchedule, on_delete=models.CASCADE, related_name="classes")
     name = models.CharField(max_length=20)  # Economy, Business, Premium

@@ -7,7 +7,11 @@ from apps.common.models import ServiceProvider # Represents the airline company
 
 # This model Represents the specific Airplane
 class Aircraft(models.Model):
+
+    type = [("small","S"),("large","L"),("big","B")]
+
     airline = models.ForeignKey(ServiceProvider,on_delete=models.CASCADE)
+    aircraft_type = models.CharField(max_length=50,choices=type,null=True)
     seat_capacity = models.PositiveIntegerField(validators=[MinValueValidator(1)])
     economy_seats = models.PositiveIntegerField(default=0)
     business_seats = models.PositiveIntegerField(default=0)
@@ -17,11 +21,11 @@ class Aircraft(models.Model):
     @property
     def total_seats(self):
         self.seat_capacity = self.economy_seats + self.business_seats + self.firstclass_seats
-        return f"Totall Seats for this aircraft are : {self.seat_capacity}"
+        return self.seat_capacity
 
     def save(self,*args,**kwargs):
         self.seat_capacity = (self.economy_seats + self.business_seats + self.firstclass_seats)
-        super.save(*args,**kwargs)
+        super().save(*args,**kwargs)
 
     class Meta:
         ordering = ['airline']
@@ -31,11 +35,11 @@ class Aircraft(models.Model):
 
 # This model Represents the Airports for Origin and Destination
 class Airport(models.Model):
-    countryChoices = [("IND","India"),("SING","Singapore"),("JPN","Japan"),("ENG","ENGLAND")]
+    country_choices = [("IND","India"),("SING","Singapore"),("JPN","Japan"),("ENG","ENGLAND")]
     name = models.CharField(max_length=100)
     code = models.CharField(max_length=10, unique=True) 
     city = models.CharField(max_length=50)
-    country = models.CharField(max_length=200,choices=countryChoices)
+    country = models.CharField(max_length=200,choices=country_choices,default="INDIA")
     latitude = models.DecimalField(max_digits=9, decimal_places=6)
     longitude = models.DecimalField(max_digits=9, decimal_places=6)
     is_international = models.BooleanField(default=False)

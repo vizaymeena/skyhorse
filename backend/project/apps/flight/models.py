@@ -34,9 +34,19 @@ class Aircraft(models.Model):
         return f"( aircraft name is {self.airline})"
 
 # This model Represents the Airports for Origin and Destination
+class AirportName(models.Model):
+    airport_name = models.Charfield(max_length=100,null=False,blank=False,unique=True)
+
+    def __str__(self):
+        return self.airport_name
+
 class Airport(models.Model):
     country_choices = [("IND","India"),("SING","Singapore"),("JPN","Japan"),("ENG","ENGLAND")]
-    name = models.CharField(max_length=100)
+    name = models.OneToOneField(
+        AirportName,
+        on_delete=models.CASCADE,
+        related_name="airport"
+    )
     code = models.CharField(max_length=10, unique=True) 
     city = models.CharField(max_length=50)
     country = models.CharField(max_length=200,choices=country_choices,default="INDIA")
@@ -52,7 +62,7 @@ class Airport(models.Model):
 # This model represents the terminal/gate over which flight will be avialble on scheduled time
 class Terminal(models.Model):
     airport = models.ForeignKey(Airport, on_delete=models.CASCADE, related_name="terminals")
-    name = models.CharField(max_length=50)  # e.g., Terminal 1, Terminal 2
+    terminalname = models.CharField(max_length=10)  # e.g., Terminal 1, Terminal 2
     is_active = models.BooleanField(default=True)
 
     class Meta:
@@ -73,9 +83,9 @@ class Weekday(models.Model):
 # This model represents the ultimate destination of a flight journey
 class FlightRoute(models.Model):
     airline = models.ForeignKey(ServiceProvider, on_delete=models.CASCADE)
-    flight_number = models.CharField(max_length=10)
-    origin = models.ForeignKey(Airport, related_name="departures", on_delete=models.CASCADE)
-    destination = models.ForeignKey(Airport, related_name="arrivals", on_delete=models.CASCADE)
+    flight_number = models.CharField(max_length=10,blank=False,null=False)
+    origin = models.ForeignKey(Airport, related_name="departures", on_delete=models.CASCADE,blank=False,null=False)
+    destination = models.ForeignKey(Airport, related_name="arrivals", on_delete=models.CASCADE,blank=False,null=False)
     is_direct = models.BooleanField(default=False)
     operational_days = models.ManyToManyField(Weekday,related_name="routes")
     is_active = models.BooleanField(default=True)

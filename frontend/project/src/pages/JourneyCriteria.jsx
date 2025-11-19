@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import '../assets/styles/pages_styles/flight_widget.css'
+import '../assets/styles/pages_styles/journey_criteria.css'
 
 // icons
 import { Check, ArrowRightLeft ,ChevronDown } from 'lucide-react'
@@ -117,6 +117,8 @@ function FlightSearchForm() {
                 <input type="text" placeholder='FROM' />
 
                  <h4>RECENT SEARCHES</h4>
+                 
+                 
               </div>
               <div className='suggestions'>
               {airports.map((ap,key)=>(

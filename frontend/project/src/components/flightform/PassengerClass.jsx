@@ -135,6 +135,7 @@ const PassengerSelector = ({
                    <p> CLASS : {travelClass.toUpperCase()}</p>
                 </div>
             </div>
+            
             <button>Apply</button>
         </div>
     </div>

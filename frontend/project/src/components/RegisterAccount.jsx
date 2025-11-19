@@ -1,5 +1,5 @@
 // css
-import '../assets/styles/components_styles/account_registration.css'
+import '../assets/styles/components_styles/register_account.css'
 
 // Photos
 import registration_img from "../assets/images/photos/accountRegistrationImg.jpg"
@@ -74,7 +74,7 @@ export function RegisterAccount({setShowAccountForm}) {
 
           <section className="register_form-section">
             <div className="register_form-wrapper">
-
+              
               <div className="register_account-type" onClick={handleAccType}>
                 <button data-text={'personal'} className={`register_tab ${accType=='personal'? 'register_tab--active':""}`}>Personal Account</button>
                 <button data-text={'business'} className={`register_tab ${accType=='business'? 'register_tab--active':""}`}>Business Account</button>
@@ -130,10 +130,6 @@ export function RegisterAccount({setShowAccountForm}) {
             </div>
           </section>
         </div>
-    </div>
-
-   
-
-   
+    </div>   
   );
 }

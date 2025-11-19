@@ -10,11 +10,13 @@ import { useState } from 'react';
 import PrimaryNavbar from './navbar_component/PrimaryNavbar';
 
 // component
-import { RegisterAccount } from './AccountRegistration';
+import {RegisterAccount} from '../components/RegisterAccount'
+import { ServiceProviderRegistration as SPR } from '../pages/ServiceProvider'
 
 function BaseLayout() {
 
     let [showAccountForm,setShowAccountForm] = useState(false) // show registration form
+     let [showSpr,setShowSpr] = useState(false)
 
     console.log(showAccountForm)
 
@@ -24,11 +26,12 @@ function BaseLayout() {
   return (
     <>
    
-    <PrimaryNavbar setShowAccountForm={setShowAccountForm}/>
+    <PrimaryNavbar setShowSpr={setShowSpr} setShowAccountForm={setShowAccountForm}/>
     
     {/* Body */}
 
     <div className='baseBody'>
+        {showSpr && <SPR setShowSpr={setShowSpr}/>}
         {showAccountForm && <RegisterAccount setShowAccountForm={setShowAccountForm} />}
          <Outlet/>
     </div>

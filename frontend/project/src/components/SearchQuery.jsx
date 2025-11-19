@@ -5,8 +5,7 @@ import '../assets/styles/components_styles/search_query.css'
 // icons
 import { Plane, Car, Hotel } from "lucide-react";
 // components
-import FlightSearchForm from '../pages/FlightSearchForm';
-
+import FlightSearchForm from '../pages/JourneyCriteria';
 
 function SearchQuery() {
   return (
@@ -25,12 +24,12 @@ function SearchQuery() {
             <div data-text={'hotels'} className='segment'>
                 <span className='icon'><Hotel/></span>
                 <span className='service'>Hotels</span>
+                
             </div>
         </div>
 
         <div className='serviceForm'>
             <FlightSearchForm/>
-
 
         </div>
     </div>

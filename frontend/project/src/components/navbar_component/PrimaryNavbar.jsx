@@ -1,4 +1,3 @@
-import React from 'react'
 
 import { MdOutlineFlightTakeoff } from "react-icons/md";
 import { PiBagFill } from "react-icons/pi";
@@ -6,11 +5,8 @@ import { MdManageAccounts } from "react-icons/md";
 import { FaRegUser } from "react-icons/fa6";
 import { MdKeyboardArrowDown } from "react-icons/md";
 
-import { useState } from 'react';
 
-function PrimaryNavbar({setShowAccountForm}) {
- 
-    
+function PrimaryNavbar({setShowSpr}) { 
 
 
   return (
@@ -34,7 +30,7 @@ function PrimaryNavbar({setShowAccountForm}) {
                       <span><PiBagFill/></span>
                 </div>
 
-                <div className='buisnessLink'>
+                <div className='buisnessLink' onClick={()=>setShowSpr(true)}>
                     <span className='buis-heading'>Register Your Buisness</span>
                     <span>Grow Your Buisness</span>
                 </div>

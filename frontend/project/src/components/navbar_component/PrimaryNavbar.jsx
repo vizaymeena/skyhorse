@@ -5,9 +5,9 @@ import { MdManageAccounts } from "react-icons/md";
 import { FaRegUser } from "react-icons/fa6";
 import { MdKeyboardArrowDown } from "react-icons/md";
 
+function PrimaryNavbar({setShowAccountForm,setShowSpr}) { 
 
-function PrimaryNavbar({setShowSpr}) { 
-
+    
 
   return (
      <div className='nav-wrapper'>
@@ -30,7 +30,8 @@ function PrimaryNavbar({setShowSpr}) {
                       <span><PiBagFill/></span>
                 </div>
 
-                <div className='buisnessLink' onClick={()=>setShowSpr(true)}>
+                <div className='buisnessLink' 
+                onClick={()=> setShowSpr(true)}>
                     <span className='buis-heading'>Register Your Buisness</span>
                     <span>Grow Your Buisness</span>
                 </div>

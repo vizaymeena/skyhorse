@@ -11,14 +11,20 @@ import PrimaryNavbar from './navbar_component/PrimaryNavbar';
 
 // component
 import {RegisterAccount} from '../components/RegisterAccount'
-import { ServiceProviderRegistration as SPR } from '../pages/ServiceProvider'
+import { ServiceProvider } from '../pages/ServiceProvider'
 
 function BaseLayout() {
 
     let [showAccountForm,setShowAccountForm] = useState(false) // show registration form
      let [showSpr,setShowSpr] = useState(false)
 
+
+    
     console.log(showAccountForm)
+    console.log("showSpr",showSpr)
+
+
+    
 
 
 
@@ -31,7 +37,7 @@ function BaseLayout() {
     {/* Body */}
 
     <div className='baseBody'>
-        {showSpr && <SPR setShowSpr={setShowSpr}/>}
+        {showSpr && <ServiceProvider setShowSpr={setShowSpr}/> }
         {showAccountForm && <RegisterAccount setShowAccountForm={setShowAccountForm} />}
          <Outlet/>
     </div>

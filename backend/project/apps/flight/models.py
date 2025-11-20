@@ -35,7 +35,7 @@ class Aircraft(models.Model):
 
 # This model Represents the Airports for Origin and Destination
 class AirportName(models.Model):
-    airport_name = models.Charfield(max_length=100,null=False,blank=False,unique=True)
+    airport_name = models.CharField(max_length=100,null=False,blank=False,unique=True)
 
     def __str__(self):
         return self.airport_name
@@ -62,12 +62,12 @@ class Airport(models.Model):
 # This model represents the terminal/gate over which flight will be avialble on scheduled time
 class Terminal(models.Model):
     airport = models.ForeignKey(Airport, on_delete=models.CASCADE, related_name="terminals")
-    terminalname = models.CharField(max_length=10)  # e.g., Terminal 1, Terminal 2
+    terminalname = models.CharField(max_length=10,null=True,blank=True)  # e.g., Terminal 1, Terminal 2
     is_active = models.BooleanField(default=True)
 
     class Meta:
-        unique_together = ("airport", "name")
-        ordering = ["airport", "name"]
+        unique_together = ("airport", "terminalname")
+        ordering = ["airport", "terminalname"]
 
     def __str__(self):
         return f"{self.airport.code} - {self.name}"

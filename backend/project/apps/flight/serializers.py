@@ -1,16 +1,17 @@
 from apps.flight.models import *
-from rest_framework.serializers import serializers 
+from rest_framework import serializers 
 
 class AircraftSerializer(serializers.Serializer):
     # Write only fields
     AIRCRAFT_TYPES=[("small","Small"),("large","Large"),("big","Big")]
     aircraft_type=serializers.ChoiceField(choices=AIRCRAFT_TYPES)
-    id = serializers.PositiveIntegerField(read_only=True)
-    seat_capacity=serializers.PositiveIntegerField()
-    economy_seats=serializers.PositiveIntegerField()
-    business_seats=serializers.PositiveIntegerField()
-    firstclass_seats=serializers.PositiveIntegerField()
-    is_active=serializers.BooleanField(read_only=True)   # Read only field
+    id = serializers.IntegerField(read_only=True, min_value=0)
+
+    seat_capacity = serializers.IntegerField()
+    economy_seats = serializers.IntegerField()
+    business_seats = serializers.IntegerField()
+    firstclass_seats = serializers.IntegerField()
+    is_active = serializers.BooleanField(read_only=True)   # Read only field
 
     # validation 
     Limits = {
@@ -55,7 +56,7 @@ class AircraftSerializer(serializers.Serializer):
 
 
 class AirportSerializer(serializers.ModelSerializer):
-    id = serializers.PositiveIntegerField(read_only=True)
+    id = serializers.IntegerField(read_only=True)
     is_international=serializers.BooleanField(read_only=True)
     is_active=serializers.BooleanField(read_only=True)
 

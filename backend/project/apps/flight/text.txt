@@ -1,6 +1,0 @@
-aircraft ---> airport ---> terminal ---> Flight ---> flightleg ---> flightFareType ---> flightScheduled --->  
-
-
-?? Learnings
-1.how to track the hisotry of a model updates 
-2.

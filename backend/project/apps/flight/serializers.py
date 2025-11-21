@@ -6,7 +6,13 @@ class AircraftSerializer(serializers.Serializer):
     AIRCRAFT_TYPES=[("small","Small"),("large","Large"),("big","Big")]
     aircraft_type=serializers.ChoiceField(choices=AIRCRAFT_TYPES)
     id = serializers.IntegerField(read_only=True, min_value=0)
-
+    airline = serializers.ChoiceField(choices=[
+        ("indigo", "IndiGo"),
+        ("vistara", "Vistara"),
+        ("airindia", "Air India"),
+        ("spicejet", "SpiceJet"),
+        ("akasa", "Akasa Air"),
+        ])
     seat_capacity = serializers.IntegerField()
     economy_seats = serializers.IntegerField()
     business_seats = serializers.IntegerField()
@@ -53,6 +59,13 @@ class AircraftSerializer(serializers.Serializer):
 
         return instance
 
+class AirportNameSerializer(serializers.ModelSerializer):
+    id = serializers.IntegerField(read_only=True)
+
+    class Meta:
+        model=AirportName
+        fields="__all__"
+        ordering = ["airport_name"]
 
 
 class AirportSerializer(serializers.ModelSerializer):

@@ -8,9 +8,16 @@ from apps.common.models import ServiceProvider # Represents the airline company
 # This model Represents the specific Airplane
 class Aircraft(models.Model):
 
-    type = [("small","S"),("large","L"),("big","B")]
+    AIRLINES = [
+        ("indigo", "IndiGo"),
+        ("vistara", "Vistara"),
+        ("airindia", "Air India"),
+        ("spicejet", "SpiceJet"),
+        ("akasa", "Akasa Air"),
+    ]
 
-    airline = models.ForeignKey(ServiceProvider,on_delete=models.CASCADE)
+    type = [("small","S"),("large","L"),("big","B")]
+    airline = models.CharField(max_length=20, choices=AIRLINES)
     aircraft_type = models.CharField(max_length=50,choices=type,null=True)
     seat_capacity = models.PositiveIntegerField(validators=[MinValueValidator(1)])
     economy_seats = models.PositiveIntegerField(default=0)

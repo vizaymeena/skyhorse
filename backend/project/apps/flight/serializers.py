@@ -79,14 +79,12 @@ class AirportSerializer(serializers.ModelSerializer):
 
 
     def validate(self,data):
-         # check whether the value is of a data type or not.
-        if not isinstance(data["name"],str):
-            raise serializers.ValidationError("Airport name must be a valid string and does note contains numeric values")
         
-        if len(data["name"].strip()) < 8:
+        if len(data["name"].airport_name) < 8:
+            
          raise serializers.ValidationError("airport name cannot be less than 8 digits")
         
-        if len(data["code"]) < 6:
+        if len(data["code"]) < 3:
          raise serializers.ValidationError("airport code must be in b/w 6-10 digits")
         
         if not (-90 <= data["latitude"] <= 90):
@@ -105,11 +103,11 @@ class TerminalSerializer(serializers.ModelSerializer):
     class Meta:
         model = Terminal
         fields="__all__"
-        read_only_field="id"
+        read_only_fields="id"
 
     # ======== VALIDATION ========
     def validate(self,data):
-       terminal = data.get("terminal_name")
+       terminal = data.get("terminalname")
        if len(terminal) < 4 and len(terminal) > 10:
            raise serializers.ValidationError("terminal name must be in b/w 4-10 digits")
        
@@ -129,6 +127,7 @@ class FlightRouteSerializer(serializers.ModelSerializer):
     class Meta:
         model = FlightRoute
         read_only_fields=["id"]
+        fields="__all__"
 
     def validate(self, data):
         origin = data.get("origin")

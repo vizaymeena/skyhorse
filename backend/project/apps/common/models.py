@@ -5,12 +5,12 @@ from django.utils import timezone
 # Create your models here.
 
 class ServiceProvider(models.Model):
-    service_choices = [("flight","FLIGHT"),("cab","CAB"),("hotel","HOTEL")]
-    service_type = models.CharField(max_length=20,choices=service_choices ,verbose_name="Service Type")
+    
     email = models.EmailField(max_length=100,unique=True,blank=False,null=False,verbose_name="Email")
-    contact = models.PositiveIntegerField(verbose_name="Contact")
+    contact = models.PositiveIntegerField(null=False,blank=False,verbose_name="Contact")
     gstin_number = models.CharField(max_length=15,unique=True,blank=False,null=False,verbose_name="GSTN NO.")
     address = models.CharField(max_length=100 ,blank=True,null=True)
+    password = models.CharField(max_length=100,null=True,blank=False)
 
     is_active = models.BooleanField(default=True,verbose_name="Active Status")
     is_restricted = models.BooleanField(default=False,verbose_name="Restricted Provider Status")
@@ -18,10 +18,9 @@ class ServiceProvider(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f"{self.name} ({self.get_service_type_display()})" # get_<field_name>_display() for choice field
-    
+        return self.email.split("@")[0]
 
-from django.contrib.auth.hashers import make_password, check_password
+from django.contrib.auth.hashers import make_password
 class User(models.Model):
     gender_choices=[("male","M"),("female","F"),("others","O")]
     email = models.CharField(max_length=100,unique=True,blank=False,null=False)
